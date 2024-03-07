@@ -416,7 +416,19 @@ export default class GameLevel extends Scene {
      * 
      */
     protected handlePlayerBalloonCollision(player: AnimatedSprite, balloon: AnimatedSprite) {
+        if (balloon) { 
+            const balloonColor = balloon.getData('color'); 
+    
+            const playerSuitColor = player.getData('suitColor');
+    
+            if (playerSuitColor !== balloonColor) { 
+                this.damagePlayer();  
+            }
+    
+            this.popBalloon(balloonColor); 
+        }
     }
+    
 
     /**
      * Increments the amount of life the player has
